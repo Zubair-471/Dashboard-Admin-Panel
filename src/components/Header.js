@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BellIcon } from '@heroicons/react/24/outline';
+import { BellIcon, Bars3Icon } from '@heroicons/react/24/outline';
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   // Mock notification data
@@ -31,22 +31,29 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <h2 className="text-xl font-semibold text-gray-900">Dashboard</h2>
+            {/* Mobile menu button */}
+            <button
+              onClick={onMenuClick}
+              className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2"
+            >
+              <Bars3Icon className="h-6 w-6" />
+            </button>
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Dashboard</h2>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             {/* Notification Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsNotificationOpen(!isNotificationOpen)}
                 className="p-2 rounded-full text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <BellIcon className="h-6 w-6" />
+                <BellIcon className="h-5 w-5 md:h-6 md:w-6" />
                 <span className="sr-only">View notifications</span>
               </button>
 
               {isNotificationOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                <div className="origin-top-right absolute right-0 mt-2 w-72 md:w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
                   <div className="py-1">
                     <div className="px-4 py-2 border-b border-gray-200">
                       <h3 className="text-sm font-medium text-gray-900">Recent Activities</h3>
@@ -82,11 +89,11 @@ const Header = () => {
             </div>
 
             {/* User Profile */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 md:space-x-3">
               <div className="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-sm font-medium">MZ</span>
               </div>
-              <span className="text-sm font-medium text-gray-700">M. Zubair Tariq</span>
+              <span className="hidden sm:block text-sm font-medium text-gray-700">M. Zubair Tariq</span>
             </div>
           </div>
         </div>

@@ -98,43 +98,43 @@ const Overview = () => {
   ];
 
   return (
-    <div className="p-6">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Overview</h1>
-        <p className="text-gray-600">Welcome back! Here's what's happening with your freelance work.</p>
+    <div className="p-4 md:p-6">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-xl md:text-2xl font-bold text-gray-900">Overview</h1>
+        <p className="text-sm md:text-base text-gray-600">Welcome back! Here's what's happening with your freelance work.</p>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
         {stats.map((stat) => (
-          <div key={stat.name} className="bg-white rounded-lg shadow p-6">
+          <div key={stat.name} className="bg-white rounded-lg shadow p-4 md:p-6">
             <div className="flex items-center">
-              <div className={`p-3 rounded-lg ${stat.color}`}>
-                <stat.icon className="h-6 w-6 text-white" />
+              <div className={`p-2 md:p-3 rounded-lg ${stat.color}`}>
+                <stat.icon className="h-5 w-5 md:h-6 md:w-6 text-white" />
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <div className="ml-3 md:ml-4">
+                <p className="text-xs md:text-sm font-medium text-gray-600">{stat.name}</p>
+                <p className="text-lg md:text-2xl font-bold text-gray-900">{stat.value}</p>
               </div>
             </div>
-            <div className="mt-4">
-              <span className={`text-sm font-medium ${
+            <div className="mt-3 md:mt-4">
+              <span className={`text-xs md:text-sm font-medium ${
                 stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
               }`}>
                 {stat.change}
               </span>
-              <span className="text-sm text-gray-600 ml-1">from last month</span>
+              <span className="text-xs md:text-sm text-gray-600 ml-1">from last month</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
         {/* Earnings Chart */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Monthly Earnings</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-base md:text-lg font-medium text-gray-900 mb-4">Monthly Earnings</h3>
+          <ResponsiveContainer width="100%" height={250} className="md:h-[300px]">
             <AreaChart data={earningsData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
@@ -146,9 +146,9 @@ const Overview = () => {
         </div>
 
         {/* Project Status Chart */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Project Status</h3>
-          <ResponsiveContainer width="100%" height={300}>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-base md:text-lg font-medium text-gray-900 mb-4">Project Status</h3>
+          <ResponsiveContainer width="100%" height={250} className="md:h-[300px]">
             <BarChart data={projectStatusData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="status" />
@@ -162,11 +162,11 @@ const Overview = () => {
 
       {/* Recent Activity */}
       <div className="bg-white rounded-lg shadow">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h3 className="text-lg font-medium text-gray-900">Recent Activity</h3>
+        <div className="px-4 md:px-6 py-4 border-b border-gray-200">
+          <h3 className="text-base md:text-lg font-medium text-gray-900">Recent Activity</h3>
         </div>
-        <div className="p-6">
-          <div className="space-y-4">
+        <div className="p-4 md:p-6">
+          <div className="space-y-3 md:space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3">
                 <div className={`w-2 h-2 rounded-full mt-2 ${
